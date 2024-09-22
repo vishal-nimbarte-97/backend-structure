@@ -1,0 +1,15 @@
+-- Create gender enum type first
+CREATE TYPE gender_enum AS ENUM ('male', 'female', 'other');
+
+-- Now create the users table
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,          
+    name VARCHAR(100) NOT NULL,      
+    email VARCHAR(100) NOT NULL UNIQUE,
+    phone VARCHAR(100) NOT NULL,
+    gender gender_enum,
+    date_of_birth DATE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
